@@ -22,13 +22,16 @@ const displayCountry = countries => {
     });
 }
 
+//* load extra information about country
 const moreDetails = name => {
     const url = `https://restcountries.eu/rest/v2/name/${name}`;
     fetch(url)
         .then(response => response.json())
         .then(data => displayMoreDetails(data[0]))
+    .catch(error => alert('could not find detail'))
 }
 
+// *display extra information
 const displayMoreDetails = country => {
     const moreDetails = document.querySelector('.more-details');
     document.querySelector('.pop-up').style.visibility = 'visible';
@@ -41,6 +44,7 @@ const displayMoreDetails = country => {
     moreDetails.innerHTML = countryInfo;
 }
 
+// * hide extra information div
 document.getElementById('back').addEventListener('click', function () {
     document.querySelector('.pop-up').style.visibility = 'hidden';
     document.getElementById('back').style.visibility = 'hidden';
