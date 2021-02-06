@@ -28,7 +28,7 @@ const moreDetails = name => {
     fetch(url)
         .then(response => response.json())
         .then(data => displayMoreDetails(data[0]))
-    .catch(error => alert('could not find detail'))
+        .catch(error => alert('could not find detail'))
 }
 
 // *display extra information
@@ -37,8 +37,9 @@ const displayMoreDetails = country => {
     document.querySelector('.pop-up').style.visibility = 'visible';
     document.getElementById('back').style.visibility = 'visible';
     const countryInfo = `
-        <h1>Population: ${country.population}</h1>
-        <h2>Area: ${country.area} kilometer</h2>
+        <h1>${country.name}</h1>
+        <h2>Population: ${country.population}</h2>
+        <h3>Area: ${country.area} kilometer</h3>
         <img src = "${country.flag}">
     `;
     moreDetails.innerHTML = countryInfo;
